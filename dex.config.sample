@@ -1,0 +1,8 @@
+loglevel=info
+account=user-name
+password=password
+applicationid=e89453d1-337c-4a6f-80f5-496bbb0317bd
+httptimeout=20
+port=8080
+allowedUser=1918346174482
+
