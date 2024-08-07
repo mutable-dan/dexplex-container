@@ -1,0 +1,9 @@
+url:443
+{
+   reverse_proxy dexplex:8080
+   log {
+      level INFO
+      format console
+      output file /data/console.log
+   }
+}

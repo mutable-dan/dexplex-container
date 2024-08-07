@@ -1,0 +1,29 @@
+version: "3.3"
+
+services:
+   dexplex:
+      image: piggyho/dexplex:2
+      container_name: dexplex_c
+      # restart: always
+      # restart: no
+      restart: on-failure:3
+      command: start -f 
+      volumes:
+         - ./dexplex/logs:/dexplex/logs
+         - ./dexplex/config:/dexplex/config
+      depends_on:
+         - caddy
+
+   caddy:
+      image: caddy:latest
+      container_name: caddy_reverse_proxy
+      restart: unless-stopped
+      ports:
+         - 80:80
+         - 443:443
+      volumes:
+         - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+         - ./caddy/data:/data
+         - ./caddy/config:/config
+
+
